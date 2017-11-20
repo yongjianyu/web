@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>复查</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+  <link rel="stylesheet" href="{$__PUBLIC__}\static\index\css\bootstrap.min.css">
+  <script src="{$__PUBLIC__}\static\index\js\jquery.min.js"></script>
+  <script src="{$__PUBLIC__}\static\index\js\popper.min.js"></script>
+  <script src="{$__PUBLIC__}\static\index\js\bootstrap.min.js"></script>
+  <style type="text/css">
+    .box{
+     -moz-box-shadow: inset 5px 5px 5px #CCC;
+     -webkit-box-shadow: inset 5px 5px 5px #CCC;
+     box-shadow: inset 5px 5px 5px #CCC;
+    }
+    #button{
+    	display: inline;
+    }
+  </style>
+<body style="background: #eee;">
+    <div class=".container-fluid">
+      <!--头部-->
+      <div id="top" style="background: #2dc3e8; height: 50px;">
+      <div id="logo"><img src="{$__PUBLIC__}\static\index\images\logo.png" style="float: left;"></div>
+      <div>
+        <form action="{:url('search/search')}" method="POST" class="form-inline" style="float: right; margin-top: 5px; margin-right: 10px;">
+          <input type="text" name="keyword" class="form-control">
+          <!--button class="btn btn-success" type="button" style="background: #96b97d;">Search</button-->
+          <input type="submit" value="搜索" style="background: #96b97d;" class="btn btn-success" />
+        </form>
+      </div>
+    </div>
+    <!--头部-->
+     <!--侧边栏-->
+      <div style="float: left; width:200px; margin-left: 5px; height: 600px;" class="box">
+        <nav class="navbar bg-light" style="width:100%;">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="{:url('add/index')}">添加病人</a></li>
+            <!--li class="nav-item"><a class="nav-link" href="#">Link 2</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Link 3</a></li-->
+          </ul>
+        </nav>
+      </div>
+    <!--测边栏-->
+    <div class="box" style="width: 900px; float: left;margin:100px;padding: 50px;background: white;">
+	<div style="text-align: center;"><h5>复诊档案</h5></div>
+	{volist name='$re' id='x'}
+	<form  action="{:url('check/insert')}?id={$x.id}" method="post">
+	{/volist}
+	<table width="800" border="1" style="margin: auto;" class="table table-bordered">
+		<tr>
+			<td>主诉</td>
+			<td colspan="4"><textarea name="zhusu" style="width: 100%; height: 100px;"></textarea></td>
+		</tr>
+	</table>
+	<table width="800" class="table table-bordered">
+		<tr>
+			<td>戴镜视力</td>
+			<td>OD</td>
+			<td><input type="text" name="shiliOD"></td>
+			<td>OS</td>
+			<td><input type="text" name="shiliOS"></td>
+		</tr>
+		<tr>
+			<td>复诊眼光</td>
+			<td>OD</td>
+			<td><input type="text" name="yanguangOD"></td>
+			<td>OS</td>
+			<td><input type="text" name="yanguangOS"></td>
+		</tr>
+	</table>
+	<table width="800" class="table table-bordered">
+		<tr>
+			<td>处理建议</td>
+			<td colspan="4"><textarea name="jianyi" style="width: 100%; height: 100px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>复诊时间</td>
+			<td><input type="text" name="date" value="{$date}" /></td>
+			<td>
+			时间提醒
+			<select name="check">
+  				<option value ="3个月">3个月</option>
+  				<option value ="6个月">6个月</option>
+  				<option value ="12个月">12个月</option>
+			</select>
+			</td>
+		</tr>
+	</table>
+	<div id="button"><input type="submit" name="提交" class="btn btn-outline-primary"></div>
+	<div id="button"><input type="button" name="返回" class="btn btn-outline-primary" onclick="window.history.back(-1); " value="返回" /></div>
+	</from>
+	
+	{volist name='$result' id='n'}
+	<div style="text-align: center;"><h5>复诊档案</h5></div>
+	<table width="800" class="table table-bordered" style="margin: auto;">
+		<tr height="100">
+			<td>主诉</td>
+			<td width="700">{$n.zhusu}</td>
+		</tr>
+	</table>
+	<table width="800" class="table table-bordered">
+		<tr>
+			<td rowspan="2">戴镜视力</td>
+			<td>OD</td>
+			<td>{$n.shiliOD}</td>
+			<td rowspan="2">复诊眼光</td>
+			<td>OD</td>
+			<td>{$n.yanguangOD}</td>
+		</tr>
+		<tr>
+			<td>OS</td>
+			<td>{$n.shiliOS}</td>
+			<td>OS</td>
+			<td>{$n.yanguangOS}</td>
+		</tr>
+	</table>
+	<table width="800" class="table table-bordered">
+		<tr height="100">
+			<td>处理建议</td>
+			<td width="700">{$n.jianyi}</td>
+		</tr>
+	</table>
+	<table width="800" class="table table-bordered">
+		<tr>
+			<td>复诊时间</td>
+			<td>{$n.date}</td>
+			<td>时间提醒</td>
+			<td colspan="2">{$n.check}</td>
+		</tr>
+	</table>
+	{/volist}
+
+	<div style="text-align: center;"><h5>学生健康档案</h5></div>
+	<table width="800" class="table table-bordered" style="margin: auto;border: 1px black solid;" >
+	{volist name="$re" id="v"}
+		<tr>
+			<td>姓名:</td>
+			<td>{$v.name}</td>
+			<td>性别:</td>
+			<td>{$v.sex}</td>
+			<td>年龄:</td>
+			<td>{$v.age}</td>
+		</tr>
+		<tr>
+			<td>电话:</td>
+			<td >{$v.tel}</td>
+			<td >地址:</td>
+			<td colspan="3">{$v.address}</td>
+		</tr>
+	</table>
+	<table class="table table-bordered" width="800">
+		<tr>
+			<td rowspan="2">裸眼视力:</td>
+			<td>OD:</td>
+			<td >{$v.shiliOD}</td>
+			<td rowspan="2">原镜处方:</td>
+			<td>OD:</td>
+			<td >{$v.chufangOD}</td>
+		</tr>
+		<tr>
+			<td>OS:</td>
+			<td >{$v.shiliOS}</td>
+			<td>OS:</td>
+			<td >{$v.chufangOS}</td>
+		</tr>
+		<tr>
+			<td rowspan="2">电脑验光:</td>
+			<td>OD:</td>
+			<td >{$v.yanguangOD}</td>
+			<td rowspan="2">散瞳验光:</td>
+			<td>OD:</td>
+			<td >{$v.yanguang2OD}</td>
+		</tr>
+		<tr>
+			<td>OS:</td>
+			<td >{$v.yanguangOS}</td>
+			<td>OS:</td>
+			<td >{$v.yanguang2OS}</td>
+		</tr>
+		<tr>
+			<td rowspan="2">斜视:</td>
+			<td>OD:</td>
+			<td >{$v.xieshiOD}</td>
+			<td rowspan="2">主导眼:</td>
+			<td rowspan="2" colspan="2">{$v.zhudao}</td>
+		</tr>
+		<tr>
+			<td>OS:</td>
+			<td >{$v.xieshiOS}</td>
+		</tr>
+		</table>
+		<table class="table table-bordered" width="800">
+		<tr height="100">
+			<td>视觉功能诊断</td>
+			<td width="700">{$v.zhenduan}</td>
+		</tr>
+		<tr height="100">
+			<td>建议矫正方案</td>
+			<td width="700">{$v.fangan}</td>
+		</tr>
+	</table>
+	<table class="table table-bordered " width="800">
+		<tr>
+			<td>就诊时间</td>
+			<td>{$v.date}</td>
+			<td>复查时间</td>
+			<td>{$v.check}</td>
+		</tr>
+		{/volist}
+	</table>
+</div>
+</body>
+</html>

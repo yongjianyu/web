@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>添加病人</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+  <link rel="stylesheet" href="{$__PUBLIC__}\static\index\css\bootstrap.min.css">
+  <script src="{$__PUBLIC__}\static\index\js\jquery.min.js"></script>
+  <script src="{$__PUBLIC__}\static\index\js\popper.min.js"></script>
+  <script src="{$__PUBLIC__}\static\index\js\bootstrap.min.js"></script>
+  <style type="text/css">
+    .box{
+     -moz-box-shadow: inset 5px 5px 5px #CCC;
+     -webkit-box-shadow: inset 5px 5px 5px #CCC;
+     box-shadow: inset 5px 5px 5px #CCC;
+    }
+    #button{
+    	display: inline;
+    }
+  </style>
+<body style="background: #eee;">
+    <div class=".container-fluid">
+      <!--头部-->
+      <div id="top" style="background: #2dc3e8; height: 50px;">
+      <div id="logo"><img src="{$__PUBLIC__}\static\index\images\logo.png" style="float: left;"></div>
+      <div>
+        <form action="{:url('search/search')}" method="POST" class="form-inline" style="float: right; margin-top: 5px; margin-right: 10px;">
+          <input type="text" name="keyword" class="form-control">
+          <!--button class="btn btn-success" type="button" style="background: #96b97d;">Search</button-->
+          <input type="submit" value="搜索" style="background: #96b97d;" class="btn btn-success" />
+        </form>
+      </div>
+    </div>
+    <!--头部-->
+     <!--侧边栏-->
+      <div style="float: left; width:200px; margin-left: 5px; height: 600px;" class="box">
+        <nav class="navbar bg-light" style="width:100%;">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="{:url('add/index')}">添加病人</a></li>
+            <!--li class="nav-item"><a class="nav-link" href="#">Link 2</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Link 3</a></li-->
+          </ul>
+        </nav>
+      </div>
+    <!--测边栏-->
+<div style="width:900px;padding: 50px;background: white; float: left;margin: 100px;text-align: center;color:;" class="box">
+	<h2 align="center">学生健康档案</h2>
+	<form  action="{:url('add/insert')}" method="post">
+	<table width="800" class="table table-bordered">
+		<tr>
+			<td width="100px">姓名:</td>
+			<td><input type="text" name="name"></td>
+			<td>性别:</td>
+			<td><input type="text" name="sex"></td>
+			<td>年龄:</td>
+			<td><input type="text" name="age"></td>
+		</tr>
+		<tr>
+			<td>电话:</td>
+			<td ><input type="text" name="tel"></td>
+			<td>地址:</td>
+			<td ><input type="text" name="address"></td>
+			<td></td>
+			<td ></td>
+		</tr>
+	</table>
+	<table class="table table-bordered" width="800">
+		<tr>
+			<td rowspan="2">裸眼视力:</td>
+			<td>OD:</td>
+			<td ><input type="text" name="shiliOD"></td>
+			<td rowspan="2">原镜处方:</td>
+			<td>OD:</td>
+			<td ><input type="text" name="chufangOD"></td>
+		</tr>
+		<tr>
+			<td>OS:</td>
+			<td ><input type="text" name="shiliOS"></td>
+			<td>OS:</td>
+			<td ><input type="text" name="chufangOS"></td>
+		</tr>
+		<tr>
+			<td rowspan="2">电脑验光:</td>
+			<td>OD:</td>
+			<td ><input type="text" name="yanguangOD"></td>
+			<td rowspan="2">散瞳验光:</td>
+			<td>OD:</td>
+			<td ><input type="text" name="yanguang2OD"></td>
+		</tr>
+		<tr>
+			<td>OS:</td>
+			<td ><input type="text" name="yanguangOS"></td>
+			<td>OS:</td>
+			<td ><input type="text" name="yanguang2OS"></td>
+		</tr>
+		<tr>
+			<td rowspan="2">斜视:</td>
+			<td>OD:</td>
+			<td ><input type="text" name="xieshiOD"></td>
+			<td rowspan="2">
+			主导眼:
+			<select name="zhudao">
+  				<option value ="OD">OD</option>
+  				<option value ="OS">OS</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td>OS:</td>
+			<td ><input type="text" name="xieshiOS"></td>
+		</tr>
+		<tr height="100">
+			<td>视觉功能诊断</td>
+			<td colspan="5"><textarea name="zhenduan" 
+				style="width: 100%;height: 100px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>建议矫正方案</td>
+			<td colspan="5">
+			<textarea name="fangan" style="width: 100%;height: 100px;"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>就诊时间</td>
+			<td><input type="text" name="date" value="{$date}" /></td>
+			<td>
+			时间提醒
+			<select name="check">
+  				<option value ="3个月">3个月</option>
+  				<option value ="6个月">6个月</option>
+  				<option value ="12个月">12个月</option>
+			</select>
+			</td>
+		</tr-->
+	</table>
+	<div id="button"><input type="submit" name="提交" class="btn btn-outline-primary"></div>
+	<div id="button"><input type="button" name="返回" class="btn btn-outline-primary" onclick="window.history.back(-1); " value="返回" /></div>
+	</form>
+</div>
+</body>
+</html>

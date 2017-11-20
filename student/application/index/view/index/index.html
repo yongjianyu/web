@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+  <link rel="stylesheet" href="{$__PUBLIC__}\public\static\index\css\bootstrap.min.css">
+  <script src="{$__PUBLIC__}\public\static\index\js\jquery.min.js"></script>
+  <script src="{$__PUBLIC__}\public\static\index\js\popper.min.js"></script>
+  <script src="{$__PUBLIC__}\public\static\index\js\bootstrap.min.js"></script>
+  <style type="text/css">
+    .box{
+     -moz-box-shadow: inset 5px 5px 5px #CCC;
+     -webkit-box-shadow: inset 5px 5px 5px #CCC;
+     box-shadow: inset 5px 5px 5px #CCC;
+    }
+  </style>
+<body style="background: #eee;">
+    <div class=".container-fluid">
+      <!--头部-->
+      <div id="top" style="background: #2dc3e8; height: 50px;">
+      <div id="logo"><img src="{$__PUBLIC__}\public\static\index\images\logo.png" style="float: left;"></div>
+      <div>
+        <form action="{:url('search/search')}" method="POST" class="form-inline" style="float: right; margin-top: 5px; margin-right: 10px;">
+          <input type="text" name="keyword" class="form-control">
+          <!--button class="btn btn-success" type="button" style="background: #96b97d;">Search</button-->
+          <input type="submit" value="搜索" style="background: #96b97d;" class="btn" />
+        </form>
+      </div>
+    </div>
+   
+    <!--头部-->
+    <!--a href="{:url('add/index')}"><button ><p>添加病人</p></button></a-->
+    <!--a href="{:url('check/index')}"><button ><p>复查病人</p></button></a-->
+    <!--侧边栏-->
+      <div style="float: left; width:200px; margin-left: 5px; height: 600px;" class="box">
+        <nav class="navbar bg-light" style="width:100%;">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="{:url('add/index')}">添加病人</a></li>
+            <!--li class="nav-item"><a class="nav-link" href="#">Link 2</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Link 3</a></li-->
+          </ul>
+        </nav>
+      </div>
+    <!--测边栏-->
+
+  <div style="float: left; width: 900px; background: white;padding: 50px; margin:100px; " class="box">
+  	<table  class="table table-bordered table-hover" width="800" style="margin: auto; text-align: center;">
+  		<tr>
+  			<td>名字</td>
+  			<td>性别</td>
+  			<td>年龄</td>
+  			<td>电话</td>
+  			<td>地址</td>
+  			<td>    </td>
+  		</tr>
+  		{volist name='$arr' id='v'}
+  		<tr>
+  			<td>{$v.name}</td>
+  			<td>{$v.sex}</td>
+  			<td>{$v.age}</td>
+  			<td>{$v.tel}</td>
+  			<td>{$v.address}</td>
+  			<td><a href="{:url('check/index')}?id={$v.id}">复查</a></td>
+  		</tr>
+  		{/volist}
+  	</table>
+    <div style="float: right; margin-top: 10px;">{$w}{$a}{$b}{$w2}</div>
+  </div>
+</div>
+</body>
+</html>
