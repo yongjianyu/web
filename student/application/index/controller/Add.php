@@ -32,7 +32,10 @@ class Add extends Controller
     	->insert(['name' => input('name'), 'sex' => input('sex'),'age'=>input('age'),
     	'tel'=>input('tel'),'address'=>input('address'),'shiliOD'=>input('shiliOD'),'shiliOS'=>input('shiliOS'),
     	'chufangOD'=>input('chufangOD'),'chufangOS'=>input('yanguangOD'),'yanguangOD'=>input('yanguangOD'),'yanguangOS'=>input('yanguangOS'),'yanguang2OD'=>input('yanguang2OD'),'yanguang2OS'=>input('yanguang2OS'),'zhudao'=>input('zhudao'),'xieshiOD'=>input('xieshiOD'),'xieshiOS'=>input('xieshiOS'),'zhenduan'=>input('zhenduan'),'fangan'=>input('fangan'),'date'=>input('date'),'check'=>$b,'ischeck'=>0]);
-    	 return $this->success('新增成功','http://localhost/student/public/index.php');
+         $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+         $domain = $_SERVER['HTTP_HOST'];
+         $url = dirname(dirname(dirname(url('index/index'))));
+    	 return $this->success('新增成功',$http_type.'://'.$domain.''.$url);
     }
 
    

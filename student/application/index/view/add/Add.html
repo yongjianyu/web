@@ -22,27 +22,10 @@
 <body style="background: #eee;">
     <div class=".container-fluid">
       <!--头部-->
-      <div id="top" style="background: #2dc3e8; height: 50px;">
-      <div id="logo"><img src="{$__PUBLIC__}\static\index\images\logo.png" style="float: left;"></div>
-      <div>
-        <form action="{:url('search/search')}" method="POST" class="form-inline" style="float: right; margin-top: 5px; margin-right: 10px;">
-          <input type="text" name="keyword" class="form-control">
-          <!--button class="btn btn-success" type="button" style="background: #96b97d;">Search</button-->
-          <input type="submit" value="搜索" style="background: #96b97d;" class="btn btn-success" />
-        </form>
-      </div>
-    </div>
+      {include file="common/top"}
     <!--头部-->
      <!--侧边栏-->
-      <div style="float: left; width:200px; margin-left: 5px; height: 600px;" class="box">
-        <nav class="navbar bg-light" style="width:100%;">
-          <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="{:url('add/index')}">添加病人</a></li>
-            <!--li class="nav-item"><a class="nav-link" href="#">Link 2</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Link 3</a></li-->
-          </ul>
-        </nav>
-      </div>
+     {include file="common/left"}
     <!--测边栏-->
 <div style="width:900px;padding: 50px;background: white; float: left;margin: 100px;text-align: center;color:;" class="box">
 	<h2 align="center">学生健康档案</h2>

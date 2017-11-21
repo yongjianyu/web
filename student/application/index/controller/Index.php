@@ -102,9 +102,14 @@ class Index extends Controller
         $this->assign('a',$a);
         $this->assign('b',$b);
         $this->assign('w2',$w2);
-        $this->assign('__PUBLIC__',dirname(dirname($_SERVER['PHP_SELF'])));
+        $this->assign('__PUBLIC__',dirname($_SERVER['PHP_SELF']));
+       // $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+        //echo $_SERVER['HTTP_HOST'] ;
+        //echo $_SERVER["SERVER_NAME"] ;
+        //echo $http_type;
     	//$list = UserModel::paginate(4);
 		//$this->assign('list',$list);
+        //echo url('index/index');
         return $this->fetch();
 
     }

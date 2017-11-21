@@ -54,7 +54,9 @@ class Check extends Controller
         Db::name('ischeck')->where('id',$id)->update(['date'=>input('date'),'check'=>$b]);
     }
 
-        return $this->success('提交成功','http://localhost/student/public/index.php');
+         $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+         $domain = $_SERVER['HTTP_HOST'];
+        return $this->success('提交成功',$http_type.'://'.$domain.''.$url);
     }
 
    
